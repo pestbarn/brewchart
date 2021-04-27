@@ -1,0 +1,23 @@
+article {
+    margin: 0 auto;
+    max-width: 768px;
+    text-align: center;
+    padding: 0 1rem 1rem;
+}
+
+table {
+    margin: 0 auto;
+}
+
+td:first-child {
+    width: 50%;
+    padding-right: 1rem;
+    text-align: right;
+}
+
+tr:last-child td:last-child {
+    color: white;
+    padding: .5rem;
+    font-weight: 600;
+    background: darkslateblue;
+}
