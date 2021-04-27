@@ -12,7 +12,7 @@ Vue.use(Meta, {
 Vue.use(Helpers)
 Vue.use(vueDebounce, {
     defaultTime: '1s',
-    listenTo: ['input', 'change']
+    listenTo: ['input', 'change', 'click']
 })
 
 import Home from './components/Home.vue'

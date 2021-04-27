@@ -10,7 +10,7 @@ table {
 }
 
 td:first-child {
-    width: 50%;
+    width: 30%;
     padding-right: 1rem;
     text-align: right;
 }
@@ -20,4 +20,17 @@ tr:last-child td:last-child {
     padding: .5rem;
     font-weight: 600;
     background: darkslateblue;
+}
+
+button {
+    border: 0;
+    width: 2rem;
+    color: white;
+    font-weight: 600;
+    padding: .2rem 0;
+    background: darkslateblue;
+}
+
+button[data-button='dec'] {
+    background: darkgoldenrod;
 }
