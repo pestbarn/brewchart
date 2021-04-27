@@ -14,22 +14,39 @@ td {
 }
 
 td:first-child {
-    width: 30%;
     padding-right: 1rem;
     text-align: right;
 }
 
-tr:last-child td:last-child {
-    color: white;
-    padding: .5rem;
-    font-weight: 600;
-    background: darkslateblue;
+tr:last-child {
+    height: 3rem;
+
+    td {
+        border-top: 3px solid white;
+
+        &:last-child {
+            color: white;
+            padding: .5rem;
+            font-weight: 600;
+            background: darkslateblue;
+        }
+    }
 }
 
 td.inputs {
     position: relative;
 
+    input {
+        padding: .2rem 0;
+        text-indent: .35rem;
+
+        &:not(:valid) {
+            color: #aaa;
+        }
+    }
+
     button {
+        height: 1.75rem;
         position: absolute;
 
         &[data-button='dec'] {

@@ -4,16 +4,22 @@
 
         <table>
             <tr v-for="(n, size) in bottles" :key="size">
-                <td v-if="units === 'metric'">
+                <td v-if="units === 'metric'" :style="[n <= 0 && { color: '#aaa' }]">
                     {{ bottleSizesMetric(size) }}
                 </td>
-                <td v-if="units === 'imperial'">
+                <td v-if="units === 'imperial'" :style="[n <= 0 && { color: '#aaa' }]">
                     {{ bottleSizesImperial(size) }}
                 </td>
                 <td class="inputs">
-                    <input :value="n" :data-size="size" @input="setAmount" type="number" min="0" v-debounce="updateStorage">
-                    <button :value="n" :data-size="size" data-button="dec" @click="setAmount" v-debounce="updateStorage">-</button>
-                    <button :value="n" :data-size="size" data-button="inc" @click="setAmount" v-debounce="updateStorage">+</button>
+                    <input :value="n" :data-size="size" @input="setAmount" type="number" min="1" v-debounce="updateStorage">
+
+                    <button :value="n" :data-size="size" data-button="dec" @click="setAmount" v-debounce="updateStorage" :style="[n <= 0 && { background: '#daa54e' }]">
+                        -
+                    </button>
+
+                    <button :value="n" :data-size="size" data-button="inc" @click="setAmount" v-debounce="updateStorage">
+                        +
+                    </button>
                 </td>
                 <td ref="sums" style="display: none;">
                     {{ n * size }}
@@ -21,7 +27,7 @@
             </tr>
             <tr>
                 <td>Total:</td>
-                <td v-if="units === 'metric'">{{ totalVolumeMetric }}</td>
+                <td v-if="units === 'metric'" style="text-transform: uppercase;">{{ totalVolumeMetric }}</td>
                 <td v-if="units === 'imperial'">{{ totalVolumeImperial }}</td>
             </tr>
         </table>
@@ -31,7 +37,7 @@
         </p>
 
         <p>
-            This data is stored in your browser, so you can come back later.
+            This list is stored in your browser, so you can safely come back later.
         </p>
 
         <p>
@@ -103,9 +109,14 @@ export default {
 
             if (target.dataset.button === 'inc') {
                 this.bottles[size] = parseInt(this.bottles[size]) + 1
-            } else if (target.dataset.button === 'dec') {
-                this.bottles[size] = parseInt(this.bottles[size]) - 1
-            } else this.bottles[size] = value
+            }
+            else if (target.dataset.button === 'dec') {
+                if (value > 0) this.bottles[size] = parseInt(this.bottles[size]) - 1
+            }
+            else {
+                if (value >= 0) this.bottles[size] = value
+                else this.bottles[size] = 0
+            }
         },
         initStorage() {
             this.bottles = JSON.parse(localStorage.bottleStorage)
