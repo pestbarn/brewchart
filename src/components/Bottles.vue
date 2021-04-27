@@ -109,11 +109,9 @@ export default {
 
             if (target.dataset.button === 'inc') {
                 this.bottles[size] = parseInt(this.bottles[size]) + 1
-            }
-            else if (target.dataset.button === 'dec') {
+            } else if (target.dataset.button === 'dec') {
                 if (value > 0) this.bottles[size] = parseInt(this.bottles[size]) - 1
-            }
-            else {
+            } else {
                 if (value >= 0) this.bottles[size] = value
                 else this.bottles[size] = 0
             }
