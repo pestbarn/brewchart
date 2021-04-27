@@ -9,6 +9,10 @@ table {
     margin: 0 auto;
 }
 
+td {
+    padding: .15rem 0;
+}
+
 td:first-child {
     width: 30%;
     padding-right: 1rem;
@@ -20,6 +24,22 @@ tr:last-child td:last-child {
     padding: .5rem;
     font-weight: 600;
     background: darkslateblue;
+}
+
+td.inputs {
+    position: relative;
+
+    button {
+        position: absolute;
+
+        &[data-button='dec'] {
+            right: 2rem;
+        }
+
+        &[data-button='inc'] {
+            right: 0;
+        }
+    }
 }
 
 button {

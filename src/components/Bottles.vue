@@ -10,10 +10,10 @@
                 <td v-if="units === 'imperial'">
                     {{ bottleSizesImperial(size) }}
                 </td>
-                <td>
+                <td class="inputs">
                     <input :value="n" :data-size="size" @input="setAmount" type="number" min="0" v-debounce="updateStorage">
-                    <button :value="n" :data-size="size" data-button="inc" @click="setAmount" v-debounce="updateStorage">+</button>
                     <button :value="n" :data-size="size" data-button="dec" @click="setAmount" v-debounce="updateStorage">-</button>
+                    <button :value="n" :data-size="size" data-button="inc" @click="setAmount" v-debounce="updateStorage">+</button>
                 </td>
                 <td ref="sums" style="display: none;">
                     {{ n * size }}
@@ -103,11 +103,9 @@ export default {
 
             if (target.dataset.button === 'inc') {
                 this.bottles[size] = parseInt(this.bottles[size]) + 1
-            }
-            else if (target.dataset.button === 'dec') {
+            } else if (target.dataset.button === 'dec') {
                 this.bottles[size] = parseInt(this.bottles[size]) - 1
-            }
-            else this.bottles[size] = value
+            } else this.bottles[size] = value
         },
         initStorage() {
             this.bottles = JSON.parse(localStorage.bottleStorage)
