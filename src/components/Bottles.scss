@@ -24,6 +24,13 @@ tr:last-child {
     td {
         border-top: 3px solid white;
 
+        &:first-child {
+            color: white;
+            padding: .5rem 1rem;
+            font-weight: 600;
+            background: darkgoldenrod;
+        }
+
         &:last-child {
             color: white;
             padding: .5rem;

@@ -26,9 +26,9 @@
                 </td>
             </tr>
             <tr>
-                <td>Total:</td>
-                <td v-if="units === 'metric'" style="text-transform: uppercase;">{{ totalVolumeMetric }}</td>
+                <td v-if="units === 'metric'" style="text-transform: uppercase; padding: .5rem 1.5rem;">{{ totalVolumeMetric }}</td>
                 <td v-if="units === 'imperial'">{{ totalVolumeImperial }}</td>
+                <td>{{ Object.values(bottles).reduce((a, b) => parseInt(a) + parseInt(b)) }} bottles</td>
             </tr>
         </table>
 
